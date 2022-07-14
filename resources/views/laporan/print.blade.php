@@ -10,13 +10,17 @@
         .page-break {
             page-break-after: always;
         }
+
+        .no-wrap {
+            white-space: nowrap;
+        }
     </style>
 </head>
 
 <body>
     <h1 class="text-center">{{ __('Laporan Kegiatan') }}</h1>
     <hr>
-    <table class="table">
+    <table class="table table-borderless">
         <tbody>
             <tr>
                 <td colspan="3">
@@ -24,7 +28,7 @@
                 </td>
             </tr>
             <tr>
-                <td>{{ __('Judul Kegiatan') }}</td>
+                <td class="no-wrap">{{ __('Judul Kegiatan') }}</td>
                 <td>:</td>
                 <td>
                     <strong>{{ $laporan->judul_kegiatan }}</strong>
@@ -61,7 +65,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <h4 class="mt-4">{{ __('Jumlah Personil Yang Terlibat') }}:</h4>
+                    <h4 class="mt-3">{{ __('Jumlah Personil Yang Terlibat') }}:</h4>
                 </td>
             </tr>
             <tr>
@@ -85,13 +89,13 @@
                 <td>{{ $laporan->tni }}</td>
             </tr>
             <tr>
-                <td>{{ __('Perangkat Daerah Lainnya') }}</td>
+                <td class="no-wrap">{{ __('Perangkat Daerah Lainnya') }}</td>
                 <td>:</td>
                 <td>{{ $laporan->perangkat_daerah_lainnya }}</td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <h4 class="mt-4">{{ __('Lokasi') }}:</h4>
+                    <h4 class="mt-3">{{ __('Lokasi') }}:</h4>
                 </td>
             </tr>
             <tr>
@@ -117,7 +121,7 @@
             @if ($laporan->laporanPelanggaran)
                 <tr>
                     <td colspan="3">
-                        <h4 class="mt-4">{{ __('Pelanggaran') }}:</h4>
+                        <h4 class="mt-3">{{ __('Pelanggaran') }}:</h4>
                     </td>
                 </tr>
                 <tr>
@@ -145,17 +149,14 @@
             @if ($laporan->laporanDokumentasi)
                 <tr>
                     <td colspan="3">
-                        <h4 class="mt-4">{{ __('Dokumentasi') }}:</h4>
+                        <h4 class="mt-3 mb-2">{{ __('Dokumentasi') }}:</h4>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="3">
                         @if ($laporan->laporanDokumentasi->dokumen)
-                            <a href="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
-                                target="_blank">
-                                <img src="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
-                                    alt="dokumen" class="rounded me-2 mb-1 mb-md-0" width="170" height="110">
-                            </a>
+                            <img src="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
+                                alt="dokumen" class="rounded me-2 mb-1 " width="450" height="250">
                         @endif
                     </td>
                 </tr>
