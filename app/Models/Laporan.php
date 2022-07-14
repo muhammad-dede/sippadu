@@ -18,6 +18,11 @@ class Laporan extends Model
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
+    public function bidang()
+    {
+        return $this->belongsTo(Bidang::class, 'id_bidang', 'id');
+    }
+
     public function jenisKegiatan()
     {
         return $this->belongsTo(JenisKegiatan::class, 'id_jenis_kegiatan', 'id');

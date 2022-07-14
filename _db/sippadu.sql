@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 05 Jul 2022 pada 03.28
+-- Waktu pembuatan: 14 Jul 2022 pada 04.22
 -- Versi server: 5.7.33
 -- Versi PHP: 7.4.29
 
@@ -135,12 +135,14 @@ CREATE TABLE `laporan` (
   `id` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_bidang` int(11) DEFAULT NULL,
+  `judul_kegiatan` varchar(255) DEFAULT NULL,
   `tgl_kegiatan` date DEFAULT NULL,
   `jam_pelaporan` time DEFAULT NULL,
   `id_jenis_kegiatan` int(11) DEFAULT NULL,
   `polisi` int(11) DEFAULT '0',
   `tni` int(11) DEFAULT '0',
-  `pol_pp` int(11) DEFAULT '0',
+  `pol_pp_prov` int(11) DEFAULT NULL,
+  `pol_pp_kabkot` int(11) DEFAULT '0',
   `perangkat_daerah_lainnya` int(11) DEFAULT '0',
   `lokasi` text,
   `latitude` varchar(255) DEFAULT NULL,
@@ -150,14 +152,6 @@ CREATE TABLE `laporan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `laporan`
---
-
-INSERT INTO `laporan` (`id`, `id_user`, `id_bidang`, `tgl_kegiatan`, `jam_pelaporan`, `id_jenis_kegiatan`, `polisi`, `tni`, `pol_pp`, `perangkat_daerah_lainnya`, `lokasi`, `latitude`, `longitude`, `alamat`, `keterangan_lainnya`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2022-07-05', '06:23:00', 1, 20, 1, 12, 0, 'Jl. Veteran No.2B, Kotabaru, Kec. Serang, Kota Serang, Banten 42112, Indonesia', '-6.116870899999999', '106.1541982', 'Alun Alun Serang', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)', '2022-07-04 23:24:51', '2022-07-05 00:25:47'),
-(2, 1, 4, '2022-07-06', '08:14:00', 14, 13, 12, 11, 10, 'V6FM+GJ3, Citerep, Kec. Ciruas, Kabupaten Serang, Banten 42182, Indonesia', '-6.1262457', '106.2340437', 'Pasar Ciruas', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '2022-07-05 00:15:36', '2022-07-05 00:15:36');
 
 -- --------------------------------------------------------
 
@@ -170,14 +164,6 @@ CREATE TABLE `laporan_dokumentasi` (
   `id_laporan` int(11) DEFAULT NULL,
   `dokumen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `laporan_dokumentasi`
---
-
-INSERT INTO `laporan_dokumentasi` (`id`, `id_laporan`, `dokumen`) VALUES
-(1, 1, 'dokumen-1656980703.png'),
-(2, 2, 'dokumen-1656980136.jpg');
 
 -- --------------------------------------------------------
 
@@ -192,14 +178,6 @@ CREATE TABLE `laporan_pelanggaran` (
   `id_sangsi` int(11) DEFAULT NULL,
   `detail` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `laporan_pelanggaran`
---
-
-INSERT INTO `laporan_pelanggaran` (`id`, `id_laporan`, `id_jenis_pelanggaran`, `id_sangsi`, `detail`) VALUES
-(1, 1, 3, 4, 'ini detail'),
-(2, 2, 8, 4, 'ini detail');
 
 -- --------------------------------------------------------
 
@@ -254,7 +232,7 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(3, 'App\\Models\\User', 3);
+(2, 'App\\Models\\User', 3);
 
 -- --------------------------------------------------------
 
@@ -380,8 +358,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `email_verified_at`, `password`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin', NULL, '$2y$10$iyF2mgvYrr9V4KdVwqy3GuHArPTy0ODI99FQAH2uWiOwJs0S1XLU.', 'blank.png', 'nBEWyExuLxi5EgVDVCO3UamwzuTKFX1JSXvAbEytESEw09M6v2tMMgGsaNm1', '2022-06-24 07:56:47', '2022-07-05 02:32:15'),
-(3, 'Sukirman', 'sukirman', NULL, '$2y$10$LTDwHAHErC1wPSZZOj5aFucjg5veCqK29KmEkn5x4cNVeA7DZj2k2', 'blank.png', NULL, '2022-06-25 11:05:15', '2022-06-25 11:22:22');
+(1, 'Administrator', 'admin', NULL, '$2y$10$iyF2mgvYrr9V4KdVwqy3GuHArPTy0ODI99FQAH2uWiOwJs0S1XLU.', 'blank.png', '9AB3MmvM7xyzSXMYcaozRaomS3PVBiehzPcJ4xpeLwTo6KHMYTFXBSElUGnQ', '2022-06-24 07:56:47', '2022-07-05 02:32:15'),
+(3, 'Tibum', 'tibum', NULL, '$2y$10$vTv2B3zojIWS9CZ4JWhAOevJvouHgb//qQtIgRfMd1xgZDOEEZaJG', 'blank.png', NULL, '2022-06-25 11:05:15', '2022-07-05 12:13:58');
 
 -- --------------------------------------------------------
 
@@ -400,7 +378,7 @@ CREATE TABLE `user_detail` (
 --
 
 INSERT INTO `user_detail` (`id`, `id_user`, `id_bidang`) VALUES
-(2, 3, 5);
+(2, 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -564,19 +542,19 @@ ALTER TABLE `jenis_pelanggaran`
 -- AUTO_INCREMENT untuk tabel `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_dokumentasi`
 --
 ALTER TABLE `laporan_dokumentasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_pelanggaran`
 --
 ALTER TABLE `laporan_pelanggaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`

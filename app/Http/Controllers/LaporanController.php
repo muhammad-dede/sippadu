@@ -39,10 +39,10 @@ class LaporanController extends Controller
                     }
                 })
                 ->addColumn('kegiatan', function ($data) {
-                    return $data->jenisKegiatan ? $data->jenisKegiatan->nama_jenis_kegiatan : '';
+                    return $data->judul_kegiatan;
                 })
                 ->addColumn('lokasi', function ($data) {
-                    return $data->lokasi;
+                    return $data->lokasi !== null ? $data->lokasi : $data->alamat;
                 })
                 ->addColumn('tanggal', function ($data) {
                     return Carbon::parse($data->tgl_kegiatan)->isoFormat('D-MM-Y');
@@ -75,12 +75,14 @@ class LaporanController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
+                'judul_kegiatan' => 'required|string|max:255',
                 'tgl_kegiatan' => 'required|date',
                 'jam_pelaporan' => 'required|date_format:H:i',
                 'id_jenis_kegiatan' => 'required|string|max:11',
                 'polisi' => 'required|numeric|digits_between:0,11',
                 'tni' => 'required|numeric|digits_between:0,11',
-                'pol_pp' => 'required|numeric|digits_between:0,11',
+                'pol_pp_prov' => 'required|numeric|digits_between:0,11',
+                'pol_pp_kabkot' => 'required|numeric|digits_between:0,11',
                 'perangkat_daerah_lainnya' => 'required|numeric|digits_between:0,11',
                 'lokasi' => 'required|string|max:255',
                 'latitude' => 'required|string|max:255',
@@ -99,12 +101,14 @@ class LaporanController extends Controller
             $laporan = Laporan::create([
                 'id_user' => auth()->id(),
                 'id_bidang' => $request->id_bidang ? $request->id_bidang : auth()->user()->userDetail->id_bidang,
+                'judul_kegiatan' => ucfirst($request->judul_kegiatan),
                 'tgl_kegiatan' => $request->tgl_kegiatan,
                 'jam_pelaporan' => $request->jam_pelaporan,
                 'id_jenis_kegiatan' => $request->id_jenis_kegiatan,
                 'polisi' => $request->polisi,
                 'tni' => $request->tni,
-                'pol_pp' => $request->pol_pp,
+                'pol_pp_prov' => $request->pol_pp_prov,
+                'pol_pp_kabkot' => $request->pol_pp_kabkot,
                 'perangkat_daerah_lainnya' => $request->perangkat_daerah_lainnya,
                 'lokasi' => $request->lokasi,
                 'latitude' => $request->latitude,
@@ -171,12 +175,14 @@ class LaporanController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
+                'judul_kegiatan' => 'required|string|max:255',
                 'tgl_kegiatan' => 'required|date',
                 'jam_pelaporan' => 'required|date_format:H:i:s',
                 'id_jenis_kegiatan' => 'required|string|max:11',
                 'polisi' => 'required|numeric|digits_between:0,11',
                 'tni' => 'required|numeric|digits_between:0,11',
-                'pol_pp' => 'required|numeric|digits_between:0,11',
+                'pol_pp_prov' => 'required|numeric|digits_between:0,11',
+                'pol_pp_kabkot' => 'required|numeric|digits_between:0,11',
                 'perangkat_daerah_lainnya' => 'required|numeric|digits_between:0,11',
                 'lokasi' => 'required|string|max:255',
                 'latitude' => 'required|string|max:255',
@@ -196,12 +202,14 @@ class LaporanController extends Controller
 
             $laporan->update([
                 'id_bidang' => $request->id_bidang ? $request->id_bidang : auth()->user()->userDetail->id_bidang,
+                'judul_kegiatan' => ucfirst($request->judul_kegiatan),
                 'tgl_kegiatan' => $request->tgl_kegiatan,
                 'jam_pelaporan' => $request->jam_pelaporan,
                 'id_jenis_kegiatan' => $request->id_jenis_kegiatan,
                 'polisi' => $request->polisi,
                 'tni' => $request->tni,
-                'pol_pp' => $request->pol_pp,
+                'pol_pp_prov' => $request->pol_pp_prov,
+                'pol_pp_kabkot' => $request->pol_pp_kabkot,
                 'perangkat_daerah_lainnya' => $request->perangkat_daerah_lainnya,
                 'lokasi' => $request->lokasi,
                 'latitude' => $request->latitude,

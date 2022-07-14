@@ -73,6 +73,19 @@
                                                 <div class="mb-1 row">
                                                     <div class="col-sm-3">
                                                         <label class="col-form-label"
+                                                            for="judul_kegiatan">{{ __('Judul Kegiatan') }}</label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" id="judul_kegiatan" class="form-control"
+                                                            name="judul_kegiatan"
+                                                            value="{{ $laporan->judul_kegiatan }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-1 row">
+                                                    <div class="col-sm-3">
+                                                        <label class="col-form-label"
                                                             for="tgl_kegiatan">{{ __('Tanggal Kegiatan') }}</label>
                                                     </div>
                                                     <div class="col-sm-9">
@@ -151,11 +164,23 @@
                                                 <div class="mb-1 row">
                                                     <div class="col-sm-3">
                                                         <label class="col-form-label"
-                                                            for="pol_pp">{{ __('Pol PP Kab/Kota') }}</label>
+                                                            for="pol_pp_prov">{{ __('Pol PP Provinsi') }}</label>
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <input type="number" id="pol_pp" class="form-control"
-                                                            name="pol_pp" value="{{ $laporan->pol_pp }}" />
+                                                        <input type="number" id="pol_pp_prov" class="form-control"
+                                                            name="pol_pp_prov" value="{{ $laporan->pol_pp_prov }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-1 row">
+                                                    <div class="col-sm-3">
+                                                        <label class="col-form-label"
+                                                            for="pol_pp_kabkot">{{ __('Pol PP Kab/Kota') }}</label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" id="pol_pp_kabkot" class="form-control"
+                                                            name="pol_pp_kabkot" value="{{ $laporan->pol_pp_kabkot }}" />
                                                     </div>
                                                 </div>
                                             </div>

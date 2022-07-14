@@ -39,26 +39,50 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <img src="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
-                                class="img-fluid card-img-top" alt="Dokumentasi Pic" style="max-height: 75vh;" />
+                            {{-- <img src="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
+                                class="img-fluid card-img-top" alt="Dokumentasi Pic" style="max-height: 75vh;" /> --}}
                             <div class="card-body">
-                                <h4 class="card-title">
-                                    {{ $laporan->jenisKegiatan ? $laporan->jenisKegiatan->nama_jenis_kegiatan : '' }}
-                                </h4>
-                                <div class="d-flex mb-2">
-                                    <div class="author-info">
-                                        <small class="text-body">{{ $laporan->user ? $laporan->user->name : '' }}</small>
-                                        <span class="text-muted ms-50 me-25">|</span>
-                                        <small class="text-muted">
-                                            {{ \Carbon\Carbon::parse($laporan->tgl_kegiatan)->isoFormat('D MMMM Y') }},
-                                            {{ \Carbon\Carbon::parse($laporan->jam_pelaporan)->isoFormat('HH:MM') }}
-                                        </small>
-                                    </div>
-                                </div>
-                                <h4 class="mb-75">{{ __('Keterangan') }}:</h4>
-                                <p class="card-text mb-2">
-                                    {{ $laporan->keterangan_lainnya }}
-                                </p>
+                                <h4 class="mb-75">{{ __('Laporan Kegiatan') }}:</h4>
+                                <table class="p-0 mb-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ __('Judul Kegiatan') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>
+                                                <strong>{{ $laporan->judul_kegiatan }}</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Bidang') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->bidang ? $laporan->bidang->nama_bidang : '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Tanggal') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ \Carbon\Carbon::parse($laporan->tgl_kegiatan)->isoFormat('D MMMM Y') }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Jam') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ \Carbon\Carbon::parse($laporan->jam_pelaporan)->isoFormat('HH:MM') }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Jenis Kegiatan') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->jenisKegiatan ? $laporan->jenisKegiatan->nama_jenis_kegiatan : '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Keterangan') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->keterangan_lainnya }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 <h4 class="mb-75">{{ __('Jumlah Personil Yang Terlibat') }}:</h4>
                                 <table class="p-0 mb-2">
                                     <tbody>
