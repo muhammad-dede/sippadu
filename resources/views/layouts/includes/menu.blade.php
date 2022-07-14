@@ -2,12 +2,13 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto"><a class="navbar-brand" href="{{ route('home') }}">
-                    <span class="brand-logo">
-                        <img src="{{ asset('') }}public/logo.png" alt="" class="w-75">
+                    <img src="{{ asset('') }}public/sippadu.png" alt="" class="w-75">
+                    {{-- <span class="brand-logo">
+                        <img src="{{ asset('') }}public/sippadu.png" alt="" class="w-75">
                     </span>
                     <h2 class="brand-text">
                         {{ config('app.name') }}
-                    </h2>
+                    </h2> --}}
                 </a>
             </li>
             <li class="nav-item nav-toggle">
@@ -20,7 +21,7 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
-    <div class="main-menu-content">
+    <div class="main-menu-content pt-1">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="mt-2 nav-item {{ Request::is('/') || Request::is('home') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('home') }}">

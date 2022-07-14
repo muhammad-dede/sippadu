@@ -6,9 +6,8 @@
     <!-- Login-->
     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-            {{-- <h2 class="card-title fw-bold mb-1">{{ __('Masuk') }} {{ config('app.name') }}👋</h2> --}}
             <h2 class="card-title fw-bold mb-1">
-                <img src="{{ asset('') }}public/sippadu.png" alt="">
+                <img src="{{ asset('') }}public/sippadu.png" alt="" class="w-100">
             </h2>
             <p class="card-text mb-2">{{ __('Masuk') }} {{ config('app.name_2') }}</p>
             <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">

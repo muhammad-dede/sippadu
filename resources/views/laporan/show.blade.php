@@ -97,9 +97,14 @@
                                             <td>{{ $laporan->tni }}</td>
                                         </tr>
                                         <tr>
+                                            <td>{{ __('Pol PP Provinsi') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->pol_pp_prov }}</td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ __('Pol PP Kab/Kota') }}</td>
                                             <td>&nbsp;:&nbsp;</td>
-                                            <td>{{ $laporan->pol_pp }}</td>
+                                            <td>{{ $laporan->pol_pp_kabkot }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Perangkat Daerah Lainnya') }}</td>
