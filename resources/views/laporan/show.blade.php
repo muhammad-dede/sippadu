@@ -87,16 +87,6 @@
                                 <table class="p-0 mb-2">
                                     <tbody>
                                         <tr>
-                                            <td>{{ __('Polisi') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
-                                            <td>{{ $laporan->polisi }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('TNI') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
-                                            <td>{{ $laporan->tni }}</td>
-                                        </tr>
-                                        <tr>
                                             <td>{{ __('Pol PP Provinsi') }}</td>
                                             <td>&nbsp;:&nbsp;</td>
                                             <td>{{ $laporan->pol_pp_prov }}</td>
@@ -105,6 +95,16 @@
                                             <td>{{ __('Pol PP Kab/Kota') }}</td>
                                             <td>&nbsp;:&nbsp;</td>
                                             <td>{{ $laporan->pol_pp_kabkot }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Polisi') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->polisi }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('TNI') }}</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ $laporan->tni }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Perangkat Daerah Lainnya') }}</td>

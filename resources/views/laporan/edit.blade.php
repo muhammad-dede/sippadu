@@ -140,6 +140,31 @@
                                                 <div class="mb-1 row">
                                                     <div class="col-sm-3">
                                                         <label class="col-form-label"
+                                                            for="pol_pp_prov">{{ __('Pol PP Provinsi') }}</label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" id="pol_pp_prov" class="form-control"
+                                                            name="pol_pp_prov" value="{{ $laporan->pol_pp_prov }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-1 row">
+                                                    <div class="col-sm-3">
+                                                        <label class="col-form-label"
+                                                            for="pol_pp_kabkot">{{ __('Pol PP Kab/Kota') }}</label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" id="pol_pp_kabkot" class="form-control"
+                                                            name="pol_pp_kabkot"
+                                                            value="{{ $laporan->pol_pp_kabkot }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-1 row">
+                                                    <div class="col-sm-3">
+                                                        <label class="col-form-label"
                                                             for="polisi">{{ __('Polisi') }}</label>
                                                     </div>
                                                     <div class="col-sm-9">
@@ -157,30 +182,6 @@
                                                     <div class="col-sm-9">
                                                         <input type="number" id="tni" class="form-control"
                                                             name="tni" value="{{ $laporan->tni }}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-1 row">
-                                                    <div class="col-sm-3">
-                                                        <label class="col-form-label"
-                                                            for="pol_pp_prov">{{ __('Pol PP Provinsi') }}</label>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <input type="number" id="pol_pp_prov" class="form-control"
-                                                            name="pol_pp_prov" value="{{ $laporan->pol_pp_prov }}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-1 row">
-                                                    <div class="col-sm-3">
-                                                        <label class="col-form-label"
-                                                            for="pol_pp_kabkot">{{ __('Pol PP Kab/Kota') }}</label>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <input type="number" id="pol_pp_kabkot" class="form-control"
-                                                            name="pol_pp_kabkot" value="{{ $laporan->pol_pp_kabkot }}" />
                                                     </div>
                                                 </div>
                                             </div>
