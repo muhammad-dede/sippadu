@@ -53,7 +53,7 @@
                                                 <th>{{ __('Kegiatan') }}</th>
                                                 <th>{{ __('Lokasi') }}</th>
                                                 <th>{{ __('Tanggal') }}</th>
-                                                <th class="text-center">{{ __('Opsi') }}</th>
+                                                <th class="text-center w-25">{{ __('Opsi') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table-data"></tbody>

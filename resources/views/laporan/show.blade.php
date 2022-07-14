@@ -33,147 +33,169 @@
                     </div>
                 </div>
             </div>
+            <div class="content-header-right text-md-end col-md-3 col-12">
+                <div class="mb-1 breadcrumb-right">
+                    <a href="{{ route('laporan.edit', $laporan->id) }}" class="btn btn-warning">
+                        {{ __('Edit') }}
+                    </a>
+                    <a href="{{ route('laporan.print', $laporan->id) }}" class="dt-button create-new btn btn-danger"
+                        id="btn-print" target="_blank">
+                        <span>
+                            {{ __('Print') }}
+                        </span>
+                    </a>
+                    <a href="{{ route('laporan.index') }}" class="btn btn-outline-secondary">
+                        {{ __('Kembali') }}
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="content-body">
             <div class="blog-detail-wrapper">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            {{-- <img src="{{ asset('') }}public/dokumentasi/{{ $laporan->laporanDokumentasi->dokumen }}"
-                                class="img-fluid card-img-top" alt="Dokumentasi Pic" style="max-height: 75vh;" /> --}}
-                            <div class="card-body">
-                                <h4 class="mb-75">{{ __('Laporan Kegiatan') }}:</h4>
-                                <table class="p-0 mb-2">
+                            <div class="card-body table-responsive">
+                                <table class="p-0 mb-2 table">
                                     <tbody>
                                         <tr>
+                                            <td colspan="3">
+                                                <h4 class="mb-75">{{ __('Laporan Kegiatan') }}:</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ __('Judul Kegiatan') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>
                                                 <strong>{{ $laporan->judul_kegiatan }}</strong>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Bidang') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->bidang ? $laporan->bidang->nama_bidang : '' }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Tanggal') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ \Carbon\Carbon::parse($laporan->tgl_kegiatan)->isoFormat('D MMMM Y') }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Jam') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ \Carbon\Carbon::parse($laporan->jam_pelaporan)->isoFormat('HH:MM') }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Jenis Kegiatan') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->jenisKegiatan ? $laporan->jenisKegiatan->nama_jenis_kegiatan : '' }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Keterangan') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->keterangan_lainnya }}
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <h4 class="mb-75">{{ __('Jumlah Personil Yang Terlibat') }}:</h4>
-                                <table class="p-0 mb-2">
-                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">
+                                                <h4 class="my-75">{{ __('Jumlah Personil Yang Terlibat') }}:</h4>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>{{ __('Pol PP Provinsi') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->pol_pp_prov }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Pol PP Kab/Kota') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->pol_pp_kabkot }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Polisi') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->polisi }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('TNI') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->tni }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Perangkat Daerah Lainnya') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->perangkat_daerah_lainnya }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <h4 class="mb-75">{{ __('Lokasi') }}:</h4>
-                                <input type="hidden" id="latitude" value="{{ $laporan->latitude }}">
-                                <input type="hidden" id="longitude" value="{{ $laporan->longitude }}">
-                                <div id="map" style=" height: 50vh;width: 100%;margin-top: 10px;">
-                                </div>
-                                <table class="p-0 mb-2 mt-1">
-                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">
+                                                <h4 class="my-75">{{ __('Lokasi') }}:</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input type="hidden" id="latitude" value="{{ $laporan->latitude }}">
+                                                <input type="hidden" id="longitude" value="{{ $laporan->longitude }}">
+                                                <div id="map" style=" height: 50vh;width: 100%;margin-top: 10px;">
+                                                </div>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>{{ __('Alamat Lengkap') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->alamat }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Lokasi') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->lokasi }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Latitude') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->latitude }}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('Longitude') }}</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>:</td>
                                             <td>{{ $laporan->longitude }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                @if ($laporan->laporanPelanggaran)
-                                    <h4 class="mb-75">{{ __('Pelanggaran') }}:</h4>
-                                    <table class="p-0 mb-2">
-                                        <tbody>
+                                        @if ($laporan->laporanPelanggaran)
+                                            <tr>
+                                                <td colspan="3">
+                                                    <h4 class="my-75">{{ __('Pelanggaran') }}:</h4>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>{{ __('Jenis Pelanggaran') }}</td>
-                                                <td>&nbsp;:&nbsp;</td>
+                                                <td>:</td>
                                                 <td>
                                                     {{ $laporan->laporanPelanggaran ? ($laporan->laporanPelanggaran->jenisPelanggaran ? $laporan->laporanPelanggaran->jenisPelanggaran->nama_jenis_pelanggaran : '') : '' }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>{{ __('Sangsi') }}</td>
-                                                <td>&nbsp;:&nbsp;</td>
+                                                <td>:</td>
                                                 <td>
                                                     {{ $laporan->laporanPelanggaran ? ($laporan->laporanPelanggaran->sangsi ? $laporan->laporanPelanggaran->sangsi->nama_sangsi : '') : '' }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>{{ __('Detail') }}</td>
-                                                <td>&nbsp;:&nbsp;</td>
+                                                <td>:</td>
                                                 <td>
                                                     {{ $laporan->laporanPelanggaran ? $laporan->laporanPelanggaran->detail : '' }}
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                @endif
-                                @if ($laporan->laporanDokumentasi)
-                                    <h4 class="mb-75">{{ __('Dokumentasi') }}:</h4>
-                                    <table class="p-0 mb-2">
-                                        <tbody>
+                                        @endif
+                                        @if ($laporan->laporanDokumentasi)
+                                            <tr>
+                                                <td colspan="3">
+                                                    <h4 class="my-75">{{ __('Dokumentasi') }}:</h4>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>
                                                     @if ($laporan->laporanDokumentasi->dokumen)
@@ -186,24 +208,9 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                @endif
-                                <hr class="my-2" />
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <div class="d-flex align-items-center me-1">
-                                            <a href="{{ route('laporan.edit', $laporan->id) }}" class="btn btn-warning">
-                                                {{ __('Edit') }}
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('laporan.index') }}" class="btn btn-outline-secondary">
-                                                {{ __('Kembali') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endif
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

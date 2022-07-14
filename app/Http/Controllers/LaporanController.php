@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -48,7 +49,7 @@ class LaporanController extends Controller
                     return Carbon::parse($data->tgl_kegiatan)->isoFormat('D-MM-Y');
                 })
                 ->addColumn('opsi', function ($data) {
-                    return '<a href="' . route('laporan.edit', $data->id) . '"class="btn btn-sm btn-warning me-1 my-1">Edit</a><a href="' . route('laporan.show', $data->id) . '"class="btn btn-sm btn-info">Detail</a>';
+                    return '<a href="' . route('laporan.edit', $data->id) . '"class="btn btn-sm btn-warning my-25 me-25">Edit</a><a href="' . route('laporan.show', $data->id) . '"class="btn btn-sm btn-info my-25 me-25">Detail</a><a href="' . route('laporan.print', $data->id) . '"class="btn btn-sm btn-danger my-25 me-25" target="_blank">Print</a>';
                 })
                 ->rawColumns(['kegiatan', 'lokasi', 'tanggal', 'opsi'])
                 ->make(true);
@@ -260,5 +261,15 @@ class LaporanController extends Controller
         }
 
         return view('laporan.show', compact('laporan'));
+    }
+
+    public function print($id)
+    {
+        $laporan = Laporan::findOrFail($id);
+
+        $pdf = PDF::loadView('laporan.print', ['laporan' => $laporan])->setPaper('a4', 'potrait')->setWarnings(false);
+
+        return $pdf->stream();
+        // return $pdf->download($laporan->judul_kegiatan . '.pdf');
     }
 }

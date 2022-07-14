@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporan/{id}/edit', [App\Http\Controllers\LaporanController::class, 'edit'])->name('laporan.edit');
     Route::put('/laporan/{id}/update', [App\Http\Controllers\LaporanController::class, 'update'])->name('laporan.update');
     Route::get('/laporan/{id}/show', [App\Http\Controllers\LaporanController::class, 'show'])->name('laporan.show');
+    Route::get('/laporan/{id}/print', [App\Http\Controllers\LaporanController::class, 'print'])->name('laporan.print');
     // Pengaturan
     Route::get('/akun', [App\Http\Controllers\AkunController::class, 'index'])->name('akun.index');
     Route::post('/akun/update', [App\Http\Controllers\AkunController::class, 'update'])->name('akun.update');
